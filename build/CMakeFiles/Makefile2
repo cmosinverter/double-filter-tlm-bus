@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/user/ee6470/hw2/filter_tlm_bus/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/sobel.dir/all
+all: CMakeFiles/double.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,45 +71,45 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/sobel.dir/clean
+clean: CMakeFiles/double.dir/clean
 clean: CMakeFiles/run.dir/clean
 clean: CMakeFiles/check.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/sobel.dir
+# Target rules for target CMakeFiles/double.dir
 
 # All Build rule for target.
-CMakeFiles/sobel.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/user/ee6470/hw2/filter_tlm_bus/build/CMakeFiles --progress-num=2,3,4,5,6,7 "Built target sobel"
-.PHONY : CMakeFiles/sobel.dir/all
+CMakeFiles/double.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/user/ee6470/hw2/filter_tlm_bus/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target double"
+.PHONY : CMakeFiles/double.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/sobel.dir/rule: cmake_check_build_system
+CMakeFiles/double.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/user/ee6470/hw2/filter_tlm_bus/build/CMakeFiles 6
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/sobel.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/double.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/user/ee6470/hw2/filter_tlm_bus/build/CMakeFiles 0
-.PHONY : CMakeFiles/sobel.dir/rule
+.PHONY : CMakeFiles/double.dir/rule
 
 # Convenience name for target.
-sobel: CMakeFiles/sobel.dir/rule
-.PHONY : sobel
+double: CMakeFiles/double.dir/rule
+.PHONY : double
 
 # clean rule for target.
-CMakeFiles/sobel.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/clean
-.PHONY : CMakeFiles/sobel.dir/clean
+CMakeFiles/double.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/clean
+.PHONY : CMakeFiles/double.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/run.dir
 
 # All Build rule for target.
-CMakeFiles/run.dir/all: CMakeFiles/sobel.dir/all
+CMakeFiles/run.dir/all: CMakeFiles/double.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/user/ee6470/hw2/filter_tlm_bus/build/CMakeFiles --progress-num=1 "Built target run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/user/ee6470/hw2/filter_tlm_bus/build/CMakeFiles --progress-num=7 "Built target run"
 .PHONY : CMakeFiles/run.dir/all
 
 # Build rule for subdir invocation for target.

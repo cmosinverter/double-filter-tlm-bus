@@ -67,7 +67,7 @@ include CMakeFiles/check.dir/compiler_depend.make
 include CMakeFiles/check.dir/progress.make
 
 CMakeFiles/check:
-	cd /home/user/ee6470/hw2/filter_tlm_bus && diff -s /home/user/ee6470/hw2/filter_tlm_bus/build/out.bmp golden/lena_std_short_sobel.bmp
+	cd /home/user/ee6470/hw2/filter_tlm_bus && diff -s /home/user/ee6470/hw2/filter_tlm_bus/build/out.bmp golden/lena_std_short_double.bmp
 
 check: CMakeFiles/check
 check: CMakeFiles/check.dir/build.make

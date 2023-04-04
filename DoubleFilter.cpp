@@ -1,18 +1,18 @@
 #include <cmath>
 #include <iomanip>
 
-#include "SobelFilter.h"
+#include "DoubleFilter.h"
 
-SobelFilter::SobelFilter(sc_module_name n)
+DoubleFilter::DoubleFilter(sc_module_name n)
     : sc_module(n), t_skt("t_skt"), base_offset(0) {
   SC_THREAD(do_filter);
 
-  t_skt.register_b_transport(this, &SobelFilter::blocking_transport);
+  t_skt.register_b_transport(this, &DoubleFilter::blocking_transport);
 }
 
-SobelFilter::~SobelFilter() = default;
+DoubleFilter::~DoubleFilter() = default;
 
-void SobelFilter::do_filter() {
+void DoubleFilter::do_filter() {
 
   std::vector<int> reds, greens, blues;
   int counter = 0;
@@ -106,7 +106,7 @@ void SobelFilter::do_filter() {
   }
 }
 
-void SobelFilter::blocking_transport(tlm::tlm_generic_payload &payload,
+void DoubleFilter::blocking_transport(tlm::tlm_generic_payload &payload,
                                      sc_core::sc_time &delay) {
   sc_dt::uint64 addr = payload.get_address();
   addr -= base_offset;
@@ -116,17 +116,17 @@ void SobelFilter::blocking_transport(tlm::tlm_generic_payload &payload,
   switch (payload.get_command()) {
   case tlm::TLM_READ_COMMAND:
     switch (addr) {
-    case SOBEL_FILTER_RESULT_ADDR:
+    case DOUBLE_FILTER_RESULT_ADDR:
       buffer.uc[0] = o_r.read();
       buffer.uc[1] = o_g.read();
       buffer.uc[2] = o_b.read();
       buffer.uc[3] = 0;
       break;
-    case SOBEL_FILTER_CHECK_ADDR:
+    case DOUBLE_FILTER_CHECK_ADDR:
       buffer.uint = o_r.num_available();
     break;
     default:
-      std::cerr << "Error! SobelFilter::blocking_transport: address 0x"
+      std::cerr << "Error! DoubleFilter::blocking_transport: address 0x"
                 << std::setfill('0') << std::setw(8) << std::hex << addr
                 << std::dec << " is not valid" << std::endl;
     }
@@ -134,11 +134,11 @@ void SobelFilter::blocking_transport(tlm::tlm_generic_payload &payload,
     data_ptr[1] = buffer.uc[1];
     data_ptr[2] = buffer.uc[2];
     data_ptr[3] = buffer.uc[3];
-    delay=sc_time(1, SC_NS);
+    delay=sc_time(5, SC_NS);
     break;
   case tlm::TLM_WRITE_COMMAND:
     switch (addr) {
-    case SOBEL_FILTER_R_ADDR:
+    case DOUBLE_FILTER_R_ADDR:
       if (mask_ptr[0] == 0xff) {
         i_r.write(data_ptr[0]);
       }
@@ -153,11 +153,11 @@ void SobelFilter::blocking_transport(tlm::tlm_generic_payload &payload,
       }
       break;
     default:
-      std::cerr << "Error! SobelFilter::blocking_transport: address 0x"
+      std::cerr << "Error! DoubleFilter::blocking_transport: address 0x"
                 << std::setfill('0') << std::setw(8) << std::hex << addr
                 << std::dec << " is not valid" << std::endl;
     }
-    delay=sc_time(1, SC_NS);
+    delay=sc_time(10, SC_NS);
     break;
   case tlm::TLM_IGNORE_COMMAND:
     payload.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);

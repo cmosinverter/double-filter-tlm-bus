@@ -165,7 +165,7 @@ void Testbench::do_sobel() {
             mask[1] = 0xff;
             mask[2] = 0xff;
             mask[3] = 0xff;
-            initiator.write_to_socket(SOBEL_MM_BASE + SOBEL_FILTER_R_ADDR, mask, data.uc, 4);
+            initiator.write_to_socket(DOUBLE_MM_BASE + DOUBLE_FILTER_R_ADDR, mask, data.uc, 4);
           }
         }
       } else {
@@ -191,19 +191,19 @@ void Testbench::do_sobel() {
             mask[1] = 0xff;
             mask[2] = 0xff;
             mask[3] = 0xff;
-            initiator.write_to_socket(SOBEL_MM_BASE + SOBEL_FILTER_R_ADDR, mask, data.uc, 4);
+            initiator.write_to_socket(DOUBLE_MM_BASE + DOUBLE_FILTER_R_ADDR, mask, data.uc, 4);
           }
         }
       }
       bool done=false;
       int output_num=0;
       while(!done){
-        initiator.read_from_socket(SOBEL_MM_BASE + SOBEL_FILTER_CHECK_ADDR, mask, data.uc, 4);
+        initiator.read_from_socket(DOUBLE_MM_BASE + DOUBLE_FILTER_CHECK_ADDR, mask, data.uc, 4);
         output_num = data.sint;
         if(output_num>0) done=true;
       }
       // wait(10 * CLOCK_PERIOD, SC_NS);
-      initiator.read_from_socket(SOBEL_MM_BASE + SOBEL_FILTER_RESULT_ADDR, mask, data.uc, 4);
+      initiator.read_from_socket(DOUBLE_MM_BASE + DOUBLE_FILTER_RESULT_ADDR, mask, data.uc, 4);
       
       //debug
       //cout << "Now at " << sc_time_stamp() << endl; //print current sc_time

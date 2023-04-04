@@ -68,9 +68,9 @@ include CMakeFiles/run.dir/progress.make
 
 CMakeFiles/run: out.bmp
 
-out.bmp: sobel
+out.bmp: double
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/user/ee6470/hw2/filter_tlm_bus/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating out.bmp"
-	./sobel /home/user/ee6470/hw2/filter_tlm_bus/lena_std_short.bmp ./out.bmp
+	./double /home/user/ee6470/hw2/filter_tlm_bus/lena_std_short.bmp ./out.bmp
 
 run: CMakeFiles/run
 run: out.bmp

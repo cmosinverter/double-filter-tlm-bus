@@ -117,17 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named sobel
+# Target rules for targets named double
 
 # Build rule for target.
-sobel: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sobel
-.PHONY : sobel
+double: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 double
+.PHONY : double
 
 # fast build rule for target.
-sobel/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/build
-.PHONY : sobel/fast
+double/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/build
+.PHONY : double/fast
 
 #=============================================================================
 # Target rules for targets named run
@@ -155,12 +155,36 @@ check/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/check.dir/build.make CMakeFiles/check.dir/build
 .PHONY : check/fast
 
+DoubleFilter.o: DoubleFilter.cpp.o
+.PHONY : DoubleFilter.o
+
+# target to build an object file
+DoubleFilter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/DoubleFilter.cpp.o
+.PHONY : DoubleFilter.cpp.o
+
+DoubleFilter.i: DoubleFilter.cpp.i
+.PHONY : DoubleFilter.i
+
+# target to preprocess a source file
+DoubleFilter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/DoubleFilter.cpp.i
+.PHONY : DoubleFilter.cpp.i
+
+DoubleFilter.s: DoubleFilter.cpp.s
+.PHONY : DoubleFilter.s
+
+# target to generate assembly for a file
+DoubleFilter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/DoubleFilter.cpp.s
+.PHONY : DoubleFilter.cpp.s
+
 Initiator.o: Initiator.cpp.o
 .PHONY : Initiator.o
 
 # target to build an object file
 Initiator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/Initiator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/Initiator.cpp.o
 .PHONY : Initiator.cpp.o
 
 Initiator.i: Initiator.cpp.i
@@ -168,7 +192,7 @@ Initiator.i: Initiator.cpp.i
 
 # target to preprocess a source file
 Initiator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/Initiator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/Initiator.cpp.i
 .PHONY : Initiator.cpp.i
 
 Initiator.s: Initiator.cpp.s
@@ -176,39 +200,15 @@ Initiator.s: Initiator.cpp.s
 
 # target to generate assembly for a file
 Initiator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/Initiator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/Initiator.cpp.s
 .PHONY : Initiator.cpp.s
-
-SobelFilter.o: SobelFilter.cpp.o
-.PHONY : SobelFilter.o
-
-# target to build an object file
-SobelFilter.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/SobelFilter.cpp.o
-.PHONY : SobelFilter.cpp.o
-
-SobelFilter.i: SobelFilter.cpp.i
-.PHONY : SobelFilter.i
-
-# target to preprocess a source file
-SobelFilter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/SobelFilter.cpp.i
-.PHONY : SobelFilter.cpp.i
-
-SobelFilter.s: SobelFilter.cpp.s
-.PHONY : SobelFilter.s
-
-# target to generate assembly for a file
-SobelFilter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/SobelFilter.cpp.s
-.PHONY : SobelFilter.cpp.s
 
 Testbench.o: Testbench.cpp.o
 .PHONY : Testbench.o
 
 # target to build an object file
 Testbench.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/Testbench.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/Testbench.cpp.o
 .PHONY : Testbench.cpp.o
 
 Testbench.i: Testbench.cpp.i
@@ -216,7 +216,7 @@ Testbench.i: Testbench.cpp.i
 
 # target to preprocess a source file
 Testbench.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/Testbench.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/Testbench.cpp.i
 .PHONY : Testbench.cpp.i
 
 Testbench.s: Testbench.cpp.s
@@ -224,7 +224,7 @@ Testbench.s: Testbench.cpp.s
 
 # target to generate assembly for a file
 Testbench.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/Testbench.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/Testbench.cpp.s
 .PHONY : Testbench.cpp.s
 
 main.o: main.cpp.o
@@ -232,7 +232,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -240,7 +240,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -248,7 +248,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 tlm_log.o: tlm_log.cpp.o
@@ -256,7 +256,7 @@ tlm_log.o: tlm_log.cpp.o
 
 # target to build an object file
 tlm_log.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/tlm_log.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/tlm_log.cpp.o
 .PHONY : tlm_log.cpp.o
 
 tlm_log.i: tlm_log.cpp.i
@@ -264,7 +264,7 @@ tlm_log.i: tlm_log.cpp.i
 
 # target to preprocess a source file
 tlm_log.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/tlm_log.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/tlm_log.cpp.i
 .PHONY : tlm_log.cpp.i
 
 tlm_log.s: tlm_log.cpp.s
@@ -272,7 +272,7 @@ tlm_log.s: tlm_log.cpp.s
 
 # target to generate assembly for a file
 tlm_log.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/tlm_log.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/double.dir/build.make CMakeFiles/double.dir/tlm_log.cpp.s
 .PHONY : tlm_log.cpp.s
 
 # Help Target
@@ -285,13 +285,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... check"
 	@echo "... run"
-	@echo "... sobel"
+	@echo "... double"
+	@echo "... DoubleFilter.o"
+	@echo "... DoubleFilter.i"
+	@echo "... DoubleFilter.s"
 	@echo "... Initiator.o"
 	@echo "... Initiator.i"
 	@echo "... Initiator.s"
-	@echo "... SobelFilter.o"
-	@echo "... SobelFilter.i"
-	@echo "... SobelFilter.s"
 	@echo "... Testbench.o"
 	@echo "... Testbench.i"
 	@echo "... Testbench.s"

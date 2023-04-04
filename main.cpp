@@ -6,7 +6,7 @@ using namespace std;
 #include <sys/time.h>
 
 #include "SimpleBus.h"
-#include "SobelFilter.h"
+#include "DoubleFilter.h"
 #include "Testbench.h"
 
 // TIMEVAL STRUCT IS Defined ctime
@@ -25,10 +25,10 @@ int sc_main(int argc, char **argv) {
   Testbench tb("tb");
   SimpleBus<1, 1> bus("bus");
   bus.set_clock_period(sc_time(CLOCK_PERIOD, SC_NS));
-  SobelFilter sobel_filter("sobel_filter");
+  DoubleFilter double_filter("double_filter");
   tb.initiator.i_skt(bus.t_skt[0]);
-  bus.setDecode(0, SOBEL_MM_BASE, SOBEL_MM_BASE + SOBEL_MM_SIZE - 1);
-  bus.i_skt[0](sobel_filter.t_skt);
+  bus.setDecode(0, DOUBLE_MM_BASE, DOUBLE_MM_BASE + DOUBLE_MM_SIZE - 1);
+  bus.i_skt[0](double_filter.t_skt);
 
   tb.read_bmp(argv[1]);
   sc_start();
