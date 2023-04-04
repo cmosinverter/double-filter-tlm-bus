@@ -11,10 +11,6 @@ using namespace sc_core;
 #include "MemoryMap.h"
 #include "filter_def.h"
 
-const int WHITE = 255;
-const int BLACK = 0;
-const int THRESHOLD = 90;
-
 class Testbench : public sc_module {
 public:
   Initiator initiator;

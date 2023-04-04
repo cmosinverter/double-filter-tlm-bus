@@ -8,11 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/user/ee6470/lab04/sobel_tlm_bus/Initiator.cpp" "CMakeFiles/sobel.dir/Initiator.cpp.o" "gcc" "CMakeFiles/sobel.dir/Initiator.cpp.o.d"
-  "/home/user/ee6470/lab04/sobel_tlm_bus/SobelFilter.cpp" "CMakeFiles/sobel.dir/SobelFilter.cpp.o" "gcc" "CMakeFiles/sobel.dir/SobelFilter.cpp.o.d"
-  "/home/user/ee6470/lab04/sobel_tlm_bus/Testbench.cpp" "CMakeFiles/sobel.dir/Testbench.cpp.o" "gcc" "CMakeFiles/sobel.dir/Testbench.cpp.o.d"
-  "/home/user/ee6470/lab04/sobel_tlm_bus/main.cpp" "CMakeFiles/sobel.dir/main.cpp.o" "gcc" "CMakeFiles/sobel.dir/main.cpp.o.d"
-  "/home/user/ee6470/lab04/sobel_tlm_bus/tlm_log.cpp" "CMakeFiles/sobel.dir/tlm_log.cpp.o" "gcc" "CMakeFiles/sobel.dir/tlm_log.cpp.o.d"
+  "/home/user/ee6470/hw2/filter_tlm_bus/Initiator.cpp" "CMakeFiles/sobel.dir/Initiator.cpp.o" "gcc" "CMakeFiles/sobel.dir/Initiator.cpp.o.d"
+  "/home/user/ee6470/hw2/filter_tlm_bus/SobelFilter.cpp" "CMakeFiles/sobel.dir/SobelFilter.cpp.o" "gcc" "CMakeFiles/sobel.dir/SobelFilter.cpp.o.d"
+  "/home/user/ee6470/hw2/filter_tlm_bus/Testbench.cpp" "CMakeFiles/sobel.dir/Testbench.cpp.o" "gcc" "CMakeFiles/sobel.dir/Testbench.cpp.o.d"
+  "/home/user/ee6470/hw2/filter_tlm_bus/main.cpp" "CMakeFiles/sobel.dir/main.cpp.o" "gcc" "CMakeFiles/sobel.dir/main.cpp.o.d"
+  "/home/user/ee6470/hw2/filter_tlm_bus/tlm_log.cpp" "CMakeFiles/sobel.dir/tlm_log.cpp.o" "gcc" "CMakeFiles/sobel.dir/tlm_log.cpp.o.d"
   )
 
 # Targets to which this target links.

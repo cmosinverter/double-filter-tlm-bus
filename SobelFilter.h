@@ -15,7 +15,10 @@ public:
   sc_fifo<unsigned char> i_r;
   sc_fifo<unsigned char> i_g;
   sc_fifo<unsigned char> i_b;
-  sc_fifo<int> o_result;
+  sc_fifo<unsigned char> o_r;
+  sc_fifo<unsigned char> o_g;
+  sc_fifo<unsigned char> o_b;
+  sc_fifo<unsigned char> i_col_check;
 
   SC_HAS_PROCESS(SobelFilter);
   SobelFilter(sc_module_name n);

@@ -124,41 +124,75 @@ void Testbench::do_sobel() {
   int x, y, v, u;        // for loop counter
   unsigned char R, G, B; // color of R, G, B
   int adjustX, adjustY, xBound, yBound;
-  int total;
-
+  bool first_col;
   word data;
   unsigned char mask[4];
+
   //wait(5 * CLOCK_PERIOD, SC_NS);
   for (y = 0; y != height; ++y) {
     for (x = 0; x != width; ++x) {
+      // cout << x << ' ' << y << endl;
+      if (x == 0) {
+        first_col = 1;
+      } else {
+        first_col = 0;
+      }
       adjustX = (MASK_X % 2) ? 1 : 0; // 1
       adjustY = (MASK_Y % 2) ? 1 : 0; // 1
       xBound = MASK_X / 2;            // 1
       yBound = MASK_Y / 2;            // 1
 
-      for (v = -yBound; v != yBound + adjustY; ++v) {   //-1, 0, 1
-        for (u = -xBound; u != xBound + adjustX; ++u) { //-1, 0, 1
-          if (x + u >= 0 && x + u < width && y + v >= 0 && y + v < height) {
-            R = *(source_bitmap +
-                  bytes_per_pixel * (width * (y + v) + (x + u)) + 2);
-            G = *(source_bitmap +
-                  bytes_per_pixel * (width * (y + v) + (x + u)) + 1);
-            B = *(source_bitmap +
-                  bytes_per_pixel * (width * (y + v) + (x + u)) + 0);
-          } else {
-            R = 0;
-            G = 0;
-            B = 0;
+      if (first_col) {
+        data.uc[3] = 1;
+        for (v = -yBound; v != yBound + adjustY; ++v) {   //-1, 0, 1
+          for (u = -xBound; u != xBound + adjustX; ++u) { //-1, 0, 1
+            if (x + u >= 0 && x + u < width && y + v >= 0 && y + v < height) {
+              R = *(source_bitmap +
+                    bytes_per_pixel * (width * (y + v) + (x + u)) + 2);
+              G = *(source_bitmap +
+                    bytes_per_pixel * (width * (y + v) + (x + u)) + 1);
+              B = *(source_bitmap +
+                    bytes_per_pixel * (width * (y + v) + (x + u)) + 0);
+            } else {
+              R = 0;
+              G = 0;
+              B = 0;
+            }
+            data.uc[0] = R;
+            data.uc[1] = G;
+            data.uc[2] = B;
+            mask[0] = 0xff;
+            mask[1] = 0xff;
+            mask[2] = 0xff;
+            mask[3] = 0xff;
+            initiator.write_to_socket(SOBEL_MM_BASE + SOBEL_FILTER_R_ADDR, mask, data.uc, 4);
           }
-          data.uc[0] = R;
-          data.uc[1] = G;
-          data.uc[2] = B;
-          mask[0] = 0xff;
-          mask[1] = 0xff;
-          mask[2] = 0xff;
-          mask[3] = 0;
-          initiator.write_to_socket(SOBEL_MM_BASE + SOBEL_FILTER_R_ADDR, mask,
-                                    data.uc, 4);
+        }
+      } else {
+        data.uc[3] = 0;
+        for (v = -yBound; v != yBound + adjustY; ++v) {   //-1, 0, 1
+          for (u = xBound; u != xBound + adjustX; ++u) { //1
+            if (x + u >= 0 && x + u < width && y + v >= 0 && y + v < height) {
+              R = *(source_bitmap +
+                    bytes_per_pixel * (width * (y + v) + (x + u)) + 2);
+              G = *(source_bitmap +
+                    bytes_per_pixel * (width * (y + v) + (x + u)) + 1);
+              B = *(source_bitmap +
+                    bytes_per_pixel * (width * (y + v) + (x + u)) + 0);
+            } else {
+              R = 0;
+              G = 0;
+              B = 0;
+            }
+            data.uc[0] = R;
+            data.uc[1] = G;
+            data.uc[2] = B;
+            mask[0] = 0xff;
+            mask[1] = 0xff;
+            mask[2] = 0xff;
+            mask[3] = 0xff;
+            initiator.write_to_socket(SOBEL_MM_BASE + SOBEL_FILTER_R_ADDR, mask, data.uc, 4);
+          }
         }
       }
       bool done=false;
@@ -168,24 +202,15 @@ void Testbench::do_sobel() {
         output_num = data.sint;
         if(output_num>0) done=true;
       }
-
-      initiator.read_from_socket(SOBEL_MM_BASE + SOBEL_FILTER_RESULT_ADDR, mask,
-                                 data.uc, 4);
-      total = data.sint;
+      wait(10 * CLOCK_PERIOD, SC_NS);
+      initiator.read_from_socket(SOBEL_MM_BASE + SOBEL_FILTER_RESULT_ADDR, mask, data.uc, 4);
+      
       //debug
       //cout << "Now at " << sc_time_stamp() << endl; //print current sc_time
 
-      if (total - THRESHOLD >= 0) {
-        // black
-        *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = BLACK;
-        *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = BLACK;
-        *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = BLACK;
-      } else {
-        // white
-        *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = WHITE;
-        *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = WHITE;
-        *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = WHITE;
-      }
+      *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = data.uc[0];
+      *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = data.uc[1];
+      *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = data.uc[2];
     }
   }
   sc_stop();
