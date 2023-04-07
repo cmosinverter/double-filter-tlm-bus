@@ -19,6 +19,8 @@ public:
   sc_fifo<unsigned char> o_g;
   sc_fifo<unsigned char> o_b;
   sc_fifo<unsigned char> i_col_check;
+  unsigned int counter_read = 0;
+  unsigned int counter_write = 0;
 
   SC_HAS_PROCESS(DoubleFilter);
   DoubleFilter(sc_module_name n);
