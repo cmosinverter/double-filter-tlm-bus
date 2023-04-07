@@ -33,8 +33,8 @@ int sc_main(int argc, char **argv) {
   tb.read_bmp(argv[1]);
   sc_start();
   std::cout << "Simulated time == " << sc_core::sc_time_stamp() << std::endl;
-  std::cout << "# Read Command == " << double_filter.counter_read << std::endl;
-  std::cout << "# Write Command == " << double_filter.counter_write << std::endl;
+  std::cout << "# Read Command == " << bus.counter_read << std::endl;
+  std::cout << "# Write Command == " << bus.counter_write << std::endl;
   tb.write_bmp(argv[2]);
 
   return 0;

@@ -115,7 +115,6 @@ void DoubleFilter::blocking_transport(tlm::tlm_generic_payload &payload,
   word buffer;
   switch (payload.get_command()) {
   case tlm::TLM_READ_COMMAND:
-    counter_read += 1;
     switch (addr) {
     case DOUBLE_FILTER_RESULT_ADDR:
       buffer.uc[0] = o_r.read();
@@ -138,7 +137,6 @@ void DoubleFilter::blocking_transport(tlm::tlm_generic_payload &payload,
     delay=sc_time(5, SC_NS);
     break;
   case tlm::TLM_WRITE_COMMAND:
-    counter_write += 1;
     switch (addr) {
     case DOUBLE_FILTER_R_ADDR:
       if (mask_ptr[0] == 0xff) {

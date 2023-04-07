@@ -23,6 +23,9 @@ public:
   target_socket_type t_skt[NR_OF_TARGET_SOCKETS];
   initiator_socket_type i_skt[NR_OF_INITIATOR_SOCKETS];
 
+  unsigned int counter_read = 0;
+  unsigned int counter_write = 0;
+
 public:
   SC_HAS_PROCESS(SimpleBus);
   SimpleBus(sc_core::sc_module_name name, double clock_period_in_ps = 1000,
@@ -65,6 +68,12 @@ public:
       assert(false);
     }
 
+    if (trans.get_command() == tlm::TLM_READ_COMMAND) {
+      counter_read++;
+    }
+    if (trans.get_command() == tlm::TLM_WRITE_COMMAND) {
+      counter_write++;
+    }
     if (m_trace) {
       printf("TLM: %s decode:0x%llX -> i_skt[%d]\n", name(), orig, portId);
     }
