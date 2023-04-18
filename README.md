@@ -2,6 +2,9 @@
 
 This is the project that implements ee6470 homework 2, (30 pt) Median and mean filters with TLM interconnect
 
+## Block Diagram
+![image](https://i.imgur.com/Gs2jC48.jpg)
+
 ## Usage
 1. Clone the file to ./ee6470 folder (Git Bash)
 ```properties
